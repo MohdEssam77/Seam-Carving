@@ -1,0 +1,92 @@
+Used ChatGPT to help me understand the project description as i didn't get it fully from the pdf given.
+Then i used it in tasks 3.1 and 3.3 just for verification of my code and if there is any logical error.
+I used it in task 3.2 to understand the task then to help me with the calculate_energy function.
+After all was done, I was facing a problem that my project was passing all the tests but not owl_3.
+I used Cody AI coding assistant to help me debug the code and fix the error. It couldn't find it directly
+but after I read the forum of other students faced the same problem, I realized the error and fixed it.
+
+some of the prompt I was giving in the begining then ofcourse there will be follow up questions.
+
+Cody:
+I already wrote all the functions correctly but I am failing only one test out of 31 tests. can you please read the code, analyse it and if there is any bug or logical error tell me (don't change anything).
+the code is passing all the tests except one only called owl_3. I think the size is different or something like this. Try to read the full code once again and check whether there is a problem with me using w0 and img->w because they are supposed to be different things.
+
+ChatGPT:
+I attached a pdf of project description, I want you to break down and to explain me the tasks I must do in details and in an easy way (dont implement any code).
+
+
+how to write to a file in c?
+
+
+void statistics(struct image* img) {
+    // TODO implement (assignment 3.1)
+    /* implement and use the function:
+     * image_brightness
+     */
+    uint8_t avg_brightness = image_brightness(img);
+    printf(" width : %u\n", img->w);
+    printf(" height : %u\n", img->h);
+    printf(" brightness : %u\n", avg_brightness);
+}
+
+uint8_t image_brightness(struct image* img) {
+    // TODO implement (assignment 3.1)
+    uint8_t avg_brightness = 0;
+    for (int i = 0; i < (img->h * img->w) - 1; i++) {
+        avg_brightness =
+            avg_brightness +
+            ((img->pixels[i].r + img->pixels[i].g + img->pixels[i].b) / 3);
+    }
+    avg_brightness = avg_brightness / (img->h * img->w);
+    return avg_brightness;
+}
+Is this code correct? because i am failing the test
+
+
+ok, now can you help me in the same way with task 3.2 after going through the pdf again.
+Here is the codes needs to be changed (dont write the code your own but just help me with explaining the concept)
+
+void find_print_min_path(struct image* img) {
+    // TODO implement (assignment 3.2)
+    /* implement and use the functions:
+     * - calculate_energy
+     * - calculate_min_energy_column
+     * - calculate_optimal_path
+     * in energy.c
+     */
+    NOT_IMPLEMENTED;
+    UNUSED(img);
+}
+
+void calculate_energy(uint32_t* const energy, struct image* const img,
+                      int const w) {
+    // TODO implement (assignment 3.2)
+    NOT_IMPLEMENTED;
+    UNUSED(energy);
+    UNUSED(img);
+    UNUSED(w);
+}
+
+
+void image_write_to_file(struct image* img, const char* filename) {
+    // TODO implement (assignment 3.3)
+    FILE* file = fopen(filename, "w");
+    if (file == NULL) {
+        perror("File is not available!");
+    } else {
+        fprintf(file, "P3\n");
+        fprintf(file, "%u %u\n", img->w, img->h);
+        fprintf(file, "255");
+        for (int h = 0; h < img->h; h++) {
+            for (int w = 0; w < img->w; w++) {
+                fprintf(file, "%u %u %u", img->pixels[yx_index(h, w, img->w)].r,
+                        img->pixels[yx_index(h, w, img->w)].g,
+                        img->pixels[yx_index(h, w, img->w)].b);
+            }
+            fprintf(file, "\n");
+        }
+    }
+}
+
+This was my code for image_write_to_file, can you please check it?
+
